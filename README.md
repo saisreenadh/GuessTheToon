@@ -1,5 +1,3 @@
-In this game, you must guess the name of a cartoon.
-You are allowed up to 15 failed guesses before the game ends. 
-The HTML will track the number of Wins. 
-The HTML will also track the incorrect letters you have guessed.
-You know you have won the game when you complete the word and see the picture of the cartoon you are attempting to guess.
+# GuessTheToon
+
+GuessTheToon is a fun and interactive word-guessing game where players try to identify popular cartoons based on letters they guess. With an engaging user interface and a colorful design, it's a great way to test your cartoon knowledge!
