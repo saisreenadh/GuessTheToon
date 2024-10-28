@@ -1,0 +1,36 @@
+body {
+margin-left: 100px ;
+
+background-color: #17202A ;
+color: #ffffff;
+
+}
+.container-fluid {
+    max-width: 1200px;
+}
+#main_header {
+    height: 100px;
+    margin-right: 675px;
+    /* width: "100%"; */
+    background-image: url("../images/cartoontitle.png");
+}
+
+#main-content {
+    margin-right: 200px;
+    border-style: dotted;
+}
+
+#cartoonName {
+    width: "100%";
+    text-align: center;
+    float: center;
+
+}
+
+
+
+#columns {
+    height: 500px;
+    padding: 0px;
+    margin: 0px;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Guess Game</title>
+    <!-- adding css file -->
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--local css-->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- adding javascript file -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <section id="main_header">
+            <h1 id="cartoonHeader">Guess THAT Cartoon</h1>
+
+        </section>
+
+    </div>
+
+    <!--end of wrapper-->
+
+    <div class="container-fluid">
+        <div id="main_content">
+
+            <br>
+            <h1 id="cartoonName">Cartoon Header</h1>
+
+            <br>
+            <div class="container">
+                <div class="row">
+
+                    <div class=col-md-3>
+
+
+                    </div> <!-- end of dev for left blank column -->
+
+
+                    <div class=col-md-3>
+                        <div id="columns" style="border:3px dashed #ffffff" ;>
+
+                            <div id="guessed-image">
+                                <img src="assets/images/satcartoons.jpg">
+                            </div>
+                            <!--end of div for guessed image-->
+
+                            <!--winning image goes here-->
+                            <div id="imageHere">.</div>
+                        </div>
+                        <!--end of border for border column-->
+                    </div> <!-- end of dev for column1 -->
+
+                    <div class=col-md-3 class="column2">
+                        <div id="columns" style="border:3px dashed #ffffff" ;>
+                            <br>
+                            <p id="press"> Press Any Key To Get Started
+                            </p>
+
+
+                            <br>
+                            <p>CURRENT WORD:</p>
+                            <div id="word-array"></div>
+                            <!--current word you are guessing -->
+                            <br>
+                            <p id="wins">WINS: </p>
+                            <div id="win-counter"></div>
+
+
+                            <!--end of wins div-->
+
+                            <br>
+                            <p>REMAINING GUESSES:</p>
+                            <div id="remaining-guesses"></div>
+                            <!--end div for remaining guesses-->
+                            <br>
+                            <p> INCORRECT LETTERS</p>
+                            <div id="guessedLtrs"></div>
+                            <!--end div of letters already guessed-->
+
+                            <br>
+                            <!-- <p>Play Again</p> -->
+
+                            <!--button is disabled on load but enabled after win-->
+                            <!-- <button type="button" class="btn" id="clearFields" onClick()="reset()" disable=true;>Play Again</button> -->
+                            <button type="button" class="btn" id="clearFields" onClick="reset()" disabled = true;>Play Again</button>
+                            <div id="play-again"></div>
+                            <!--end div of playagain-->
+                        </div>
+                        <!--end of div for border -->
+                    </div> <!-- end div for column 2---->
+
+
+                    <div class=col-md-3>
+                    </div> <!-- end of dev for right blank column -->
+
+
+
+                </div>
+                <!--end of row -->
+            </div>
+            <!--end of container for row-->
+
+        </div>
+        <!--end div for main-content-->
+
+    </div>
+    <!--end of wrapper-->
+
+    <br>
+</body>
+
+</html>
