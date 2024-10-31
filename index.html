@@ -4,67 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Word Guess Game</title>
-    <!-- Adding CSS files -->
-    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+    <title>Guess THAT Cartoon</title>
+    <!-- CSS files -->
+    <link href="game/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="game/css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <!-- Adding JavaScript file -->
-    <script type="text/javascript" src="assets/javascript/game.js" defer></script>
+    <!-- JavaScript file -->
+    <script type="text/javascript" src="game/javascript/game.js" defer></script>
 </head>
 
 <body>
-    <div class="wrapper">
-        <section id="main_header">
-            <h1 id="cartoonHeader">Guess THAT Cartoon</h1>
-        </section>
-    </div>
+    <div class="container text-center">
+        <!-- Main Header -->
+        <h1 class="mt-4" id="cartoonHeader">Guess THAT Cartoon!</h1>
+        <p class="lead">Can you guess the name of the cartoon? Start typing to play!</p>
 
-    <div class="container-fluid">
-        <div id="main_content">
-            <h1 id="cartoonName">Cartoon Header</h1>
+        <!-- Game Stats Section -->
+        <div class="row mt-4">
+            <div class="col-md-4 offset-md-4">
+                <div class="game-stats p-4 rounded bg-light">
+                    <!-- Hint -->
+                    <h3>Hint:</h3>
+                    <div id="hint" class="mb-3">Press any key to start the game!</div>
 
-            <div class="container">
-                <div class="row">
-                    <!-- Left blank column -->
-                    <div class="col-md-3"></div>
+                    <!-- Current Word -->
+                    <h3>Current Word:</h3>
+                    <div id="word-array" class="mb-3"></div>
 
-                    <!-- Column with cartoon image -->
-                    <div class="col-md-3">
-                        <div id="columns" style="border: 3px dashed #ffffff;">
-                            <div id="guessed-image">
-                                <img src="assets/images/satcartoons.jpg" alt="Cartoon Image">
-                            </div>
-                            <div id="imageHere"></div>
-                        </div>
-                    </div>
+                    <!-- Wins Counter -->
+                    <h3>Wins:</h3>
+                    <div id="win-counter" class="mb-3">0</div>
 
-                    <!-- Column with game stats and controls -->
-                    <div class="col-md-3">
-                        <div id="columns" style="border: 3px dashed #ffffff;">
-                            <p id="press">Press Any Key To Get Started</p>
+                    <!-- Remaining Guesses -->
+                    <h3>Remaining Guesses:</h3>
+                    <div id="remaining-guesses" class="mb-3">5</div>
 
-                            <p>CURRENT WORD:</p>
-                            <div id="word-array"></div>
+                    <!-- Incorrect Letters -->
+                    <h3>Incorrect Letters:</h3>
+                    <div id="guessedLtrs" class="mb-3"></div>
 
-                            <p id="wins">WINS:</p>
-                            <div id="win-counter"></div>
-
-                            <p>REMAINING GUESSES:</p>
-                            <div id="remaining-guesses"></div>
-
-                            <p>INCORRECT LETTERS:</p>
-                            <div id="guessedLtrs"></div>
-
-                            <!-- Play Again Button (disabled initially) -->
-                            <button type="button" class="btn" id="clearFields" onclick="reset()" disabled>Play Again</button>
-                            <div id="play-again"></div>
-                        </div>
-                    </div>
-
-                    <!-- Right blank column -->
-                    <div class="col-md-3"></div>
+                    <!-- Play Again Button -->
+                    <button type="button" class="btn btn-primary mt-3" id="clearFields" onclick="reset()" disabled>Play Again</button>
                 </div>
             </div>
         </div>

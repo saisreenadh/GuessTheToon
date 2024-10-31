@@ -1,33 +1,80 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Indie+Flower&family=Luckiest+Guy&display=swap');
+
+/* General Body Styling */
 body {
-    margin-left: 100px;
-    background-color: #17202A;
-    color: #ffffff;
-}
-
-.container-fluid {
-    max-width: 1200px;
-}
-
-#main_header {
-    height: 100px;
-    margin-right: 675px;
-    background-image: url("../images/cartoontitle.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#main-content {
-    margin-right: 200px;
-    border-style: dotted;
-}
-
-#cartoonName {
-    width: 100%;
-    text-align: center;
-}
-
-#columns {
-    height: 500px;
-    padding: 0;
+    background-color: #fffae3;
+    font-family: 'Indie Flower', Arial, sans-serif;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     margin: 0;
+}
+
+/* Header */
+#cartoonHeader {
+    font-size: 3em;
+    font-family: 'Luckiest Guy', cursive;
+    color: #ff6f61;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px #ffa500;
+}
+
+/* Game Stats Section */
+.game-stats {
+    background-color: #ffffff;
+    border: 2px solid #ffb703;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    font-family: 'Fredoka One', sans-serif;
+    transition: transform 0.2s;
+}
+
+.game-stats:hover {
+    transform: scale(1.02);
+}
+
+.game-stats h3 {
+    font-size: 1.3em;
+    color: #ff6f61;
+}
+
+#hint {
+    font-style: italic;
+    color: #6a4c93;
+    font-family: 'Indie Flower', cursive;
+}
+
+/* Game Text Styling */
+#word-array, #remaining-guesses, #win-counter, #guessedLtrs {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Button Styling */
+#clearFields {
+    font-size: 1.1em;
+    font-family: 'Fredoka One', sans-serif;
+    color: #ffffff;
+    background-color: #48c774;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+#clearFields:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#clearFields:hover:not(:disabled) {
+    background-color: #36a673;
+    transform: scale(1.05);
 }

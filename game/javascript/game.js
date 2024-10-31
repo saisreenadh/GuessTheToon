@@ -1,3 +1,5 @@
+console.log("game.js loaded"); // Check if script loads
+
 // Game variables
 let wins = 0;
 let guessLetter = "";
@@ -8,46 +10,36 @@ let isInWord = false;
 let lettersInWord = 0;
 let unknownAnswer = [];
 
-// Cartoon list
-const cartoons = ["FLINTSTONES", "JETSONS", "FROZEN", "GARFIELD", "BAMBI", "UNDERDOG", "POPEYE"];
-
-// Image mapping
-const cartoonImages = {
-    "FLINTSTONES": "./assets/images/flintstones.jpg",
-    "JETSONS": "./assets/images/jetsons.jpg",
-    "FROZEN": "./assets/images/frozen.jpg",
-    "GARFIELD": "./assets/images/garfield.jpg",
-    "BAMBI": "./assets/images/bambi.jpg",
-    "UNDERDOG": "./assets/images/underdog.jpg",
-    "POPEYE": "./assets/images/popeye.jpg"
-};
-
-// Reset game state
-function reset() {
-    guessLetter = "";
-    remainingGuesses = 5;
-    randomCartoon = "";
-    isInWord = false;
-    lettersInWord = 0;
-    wrongLetter = [];
-    unknownAnswer = [];
-    
-    document.querySelector('#imageHere').innerHTML = `<img src="./assets/images/satcartoons.jpg">`;
-    playGame();
+// Fetch AI-generated cartoon data from backend
+async function getCartoonData() {
+    try {
+        const response = await fetch('http://localhost:3000/get-cartoon', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (!response.ok) throw new Error("Failed to fetch cartoon data");
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching cartoon data:", error);
+        alert("Unable to retrieve cartoon data.");
+    }
 }
 
 // Start game
-function playGame() {
-    // Choose a random cartoon
-    randomCartoon = cartoons[Math.floor(Math.random() * cartoons.length)];
-    console.log(`Cartoon to guess: ${randomCartoon}`);
+async function playGame() {
+    const cartoon = await getCartoonData();
+    if (!cartoon || !cartoon.title) {
+        alert("Failed to retrieve cartoon data. Please try again later.");
+        return;
+    }
 
-    // Initialize unknownAnswer with underscores for each letter in randomCartoon
+    randomCartoon = cartoon.title.toUpperCase();
+    console.log(`Cartoon to guess: ${randomCartoon}`);
     unknownAnswer = Array.from(randomCartoon, () => "_");
     displayWordState();
     displayGuessesLeft();
-    
-    document.onkeyup = handleKeyPress;
+    document.querySelector('#hint').innerHTML = `<p>Hint: ${cartoon.hint}</p>`;
+    document.addEventListener("keyup", handleKeyPress); // Ensure listener attaches
 }
 
 // Display unknown answer (dashes and correct guesses)
@@ -63,7 +55,7 @@ function displayGuessesLeft() {
 // Handle key press events
 function handleKeyPress(event) {
     guessLetter = event.key.toUpperCase();
-    if (!/^[A-Z]$/.test(guessLetter)) return; // ignore non-letter inputs
+    if (!/^[A-Z]$/.test(guessLetter)) return; // Ignore non-letter inputs
 
     isInWord = false;
 
@@ -88,7 +80,6 @@ function handleKeyPress(event) {
 function handleWin() {
     wins++;
     document.querySelector('#win-counter').innerHTML = `<p>Wins: ${wins}</p>`;
-    displayImage();
     document.getElementById("clearFields").disabled = false;
 }
 
@@ -105,11 +96,16 @@ function handleIncorrectGuess() {
     }
 }
 
-// Display winning cartoon image
-function displayImage() {
-    const imgPath = cartoonImages[randomCartoon];
-    document.querySelector('#imageHere').innerHTML = `<img src="${imgPath}" alt="${randomCartoon}">`;
+// Reset game state
+function reset() {
+    guessLetter = "";
+    remainingGuesses = 5;
+    randomCartoon = "";
+    isInWord = false;
+    lettersInWord = 0;
+    wrongLetter = [];
+    unknownAnswer = [];
+    playGame();
 }
 
-// Start the game when the page loads
-document.onkeyup = playGame;
+window.onload = playGame;
